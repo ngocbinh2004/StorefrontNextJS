@@ -1,0 +1,43 @@
+before_script:
+  - export "PATH=$PATH:/vendor/bin"
+  # Install ssh-agent if not already installed, it is required by Docker.
+  # (change apt-get to yum if you use a CentOS-based image)
+  - "which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )"
+
+  # Run ssh-agent (inside the build environment)
+  - eval $(ssh-agent -s)
+
+  # For Docker builds disable host key checking. Be aware that by adding that
+  # you are suspectible to man-in-the-middle attacks.
+  # WARNING: Use this only with the Docker executor, if you use it with shell
+  # you will overwrite your user's SSH config.
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+# Try to test load submodule
+#- git submodule update --init --recursive
+variables:
+  # Change this base on project name
+  DEPLOYMENT_FOLDER_NAME: "/oviro/storefront"
+  WEBSITE_DOCKER_IMAGE_NAME: "mystore-next-image"
+  WEBSITE_DOCKER_CONTAINER_NAME: "mystore-next"
+  WEBSITE_DOCKER_PORT: 8080
+
+deploy_dev:
+  image: voduytuan/gitlab-php-ci
+  stage: deploy
+  script:
+    - ssh-add <(echo "$OVIRO_DEMOWEB_LIVE_KEY")
+    - echo "Deploy to $DEPLOYMENT_FOLDER_NAME"
+    - ssh -p $OVIRO_DEMOWEB_LIVE_PORT $OVIRO_DEMOWEB_LIVE_USER@$OVIRO_DEMOWEB_LIVE_IP "mkdir -p $DEPLOYMENT_FOLDER_NAME"
+    # remove current src directory
+    - ssh -p $OVIRO_DEMOWEB_LIVE_PORT $OVIRO_DEMOWEB_LIVE_USER@$OVIRO_DEMOWEB_LIVE_IP "rm -rf $DEPLOYMENT_FOLDER_NAME/src"
+    #sync project directory to destination directory
+    - rsync -avuz -e "ssh -p $OVIRO_DEMOWEB_LIVE_PORT" $CI_PROJECT_DIR/ $OVIRO_DEMOWEB_LIVE_USER@$OVIRO_DEMOWEB_LIVE_IP:$DEPLOYMENT_FOLDER_NAME
+    # build new image
+    - ssh -p $OVIRO_DEMOWEB_LIVE_PORT $OVIRO_DEMOWEB_LIVE_USER@$OVIRO_DEMOWEB_LIVE_IP "docker build $DEPLOYMENT_FOLDER_NAME -t $WEBSITE_DOCKER_IMAGE_NAME"
+    # remove running container & start new container with new build image
+    - ssh -p $OVIRO_DEMOWEB_LIVE_PORT $OVIRO_DEMOWEB_LIVE_USER@$OVIRO_DEMOWEB_LIVE_IP "docker rm -f $WEBSITE_DOCKER_CONTAINER_NAME ; echo $? && docker run -d -ti --restart always --name $WEBSITE_DOCKER_CONTAINER_NAME --env-file $DEPLOYMENT_FOLDER_NAME/.env.local -p $WEBSITE_DOCKER_PORT:3000 $WEBSITE_DOCKER_IMAGE_NAME"
+  only:
+    - dev
+  when: manual

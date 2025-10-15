@@ -1,0 +1,12 @@
+const Installment = {
+  MERCHANT_HOME_CREDIT: 1,
+  MERCHANT_HD_SAISON: 3,
+  MERCHANT_SHINHAN: 5,
+  MERCHANT_ALEPAY: 7,
+
+  CARD_VISA: "VISA",
+  CARD_MASTERCARD: "MASTERCARD",
+  CARD_JCB: "JCB",
+};
+
+export default Installment;

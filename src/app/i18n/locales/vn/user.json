@@ -1,0 +1,33 @@
+{
+  "login": {
+    "heading": "Đăng nhập"
+  },
+  "signup": {
+    "heading": "Đăng ký",
+    "subheading": "Tạo tài khoản để tham gia sử dụng phần mềm"
+  },
+  "form": {
+    "error": {
+      "title": "Có lỗi khi xử lý",
+      "error_full_name_required": "Bạn chưa nhập họ tên",
+      "error_phone_required": "Bạn chưa nhập Số điện thoại",
+      "error_phone_invalid": "Số điện thoại không hợp lệ",
+      "error_email_invalid": "Địa chỉ email không hợp lệ",
+      "error_password_required": "Bạn chưa nhập mật khẩu",
+      "error_password_length_invalid": "Mật khẩu tối thiểu 7 ký tự",
+      "error_account_invalid": "Tài khoản không đúng",
+      "error_otp_invalid": "Mã OTP không đúng",
+      "error_phone_existed": "Số điện thoại đã tồn tại. Vui lòng chọn số điện thoại khác hoặc sử dụng chức năng Đăng nhập.",
+      "error_account_not_found": "Không tìm thấy tài khoản",
+      "error_email_format_invalid": "Dịnh dạng email không đúng",
+      "error_jwt_blacklisted": "Có lỗi khi gửi dữ liệu của bạn tới Server. Vui lòng nhấn nút đăng nhập lại.",
+      "error_password_old_incorrect": "Mật khẩu cũ không đúng",
+      "error_password_new_invalid": "Mật khẩu mới quá ngắn (tối thiểu 7 ký tự)",
+      "error_password_new_not_match": "Ô mật khẩu này phải khớp với MẬT KHẨU MỚI ở trên",
+      "error_update_password": "Có lỗi khi lưu mật khẩu mới vào cơ sở dữ liệu. Vui lòng thử lại sau ít phút.",
+      "error_user_not_found": "Không tìm thấy thông tin tài khoản từ phiên đăng nhập của bạn. Vui lòng đăng xuất rồi thử lại.",
+      "error_otp_required": "Bạn chưa nhập OTP",
+      "error_passport_otp_not_found": "Mã OTP bạn nhập không đúng."
+    }
+  }
+}

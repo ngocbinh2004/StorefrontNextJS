@@ -1,0 +1,19 @@
+{
+  "form": {
+    "content": "Bình luận về sản phẩm",
+    "fullname": "Họ và tên",
+    "phone": "Số điện thoại",
+    "button_send": "Gửi",
+    "success": {
+      "heading": "Thông báo",
+      "success": "Gửi bình luận thành công"
+    },
+    "error": {
+      "error_heading": "Có lỗi xảy ra",
+      "error_content_required": "Vui lòng nhập vào bình luận",
+      "error_fullname_required": "Vui lòng nhập vào họ tên",
+      "error_phone_required": "Vui lòng nhập vào số điện thoại",
+      "error_phone_invalid": "Số điện thoại không hợp lệ"
+    }
+  }
+}

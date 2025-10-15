@@ -1,0 +1,20 @@
+{
+  "heading_title": "Đánh giá & nhận xét sản phẩm",
+  "form": {
+    "content": "Đánh giá sản phẩm",
+    "fullname": "Họ và tên",
+    "phone": "Số điện thoại",
+    "button_send": "Gửi",
+    "success": {
+      "heading": "Thông báo",
+      "success": "Gửi đánh giá thành công"
+    },
+    "error": {
+      "error_content_required": "Vui lòng nhập đánh giá",
+      "error_fullname_required": "Vui lòng nhập vào họ tên",
+      "error_phone_required": "Vui lòng nhập vào số điện thoại",
+      "error_phone_length_invalid": "Số điện thoại không hợp lệ",
+      "error_rating_required": "Chọn mức đánh giá hài lòng sản phẩm"
+    }
+  }
+}

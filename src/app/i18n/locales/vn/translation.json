@@ -1,0 +1,9 @@
+{
+  "table": {
+    "delete": "Xoá"
+  },
+  "form": {
+    "save": "Lưu",
+    "close": "Đóng"
+  }
+}

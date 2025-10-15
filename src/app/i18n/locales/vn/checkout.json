@@ -1,0 +1,12 @@
+{
+  "form": {
+    "error": {
+      "title": "Có lỗi khi xử lý",
+      "error_promotion_code_heading": "Lỗi khi kiểm tra mã khuyến mãi",
+      "error_store_require": "Không có thông tin cửa hàng",
+      "error_order_detail_not_found": "Không có thông tin giỏ hàng được gửi lên",
+      "error_pickup_store_required": "Bạn chưa chọn cửa hàng đến lấy hàng",
+      "error_billing_phone_invalid": "Số điện thoại không hợp lệ"
+    }
+  }
+}
